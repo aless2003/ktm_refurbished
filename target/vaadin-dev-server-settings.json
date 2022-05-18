@@ -1,0 +1,13 @@
+{
+  "frontendFolder": "C:/Users/Magomed/Documents/GitHub/ktm_refurbished/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/Magomed/Documents/GitHub/ktm_refurbished/target/flow-frontend",
+  "staticOutput": "C:/Users/Magomed/Documents/GitHub/ktm_refurbished/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "frontendBundleOutput": "C:\\Users\\Magomed\\Documents\\GitHub\\ktm_refurbished\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "addonFrontendFolder": "target/flow-frontend/",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\Magomed\\Documents\\GitHub\\ktm_refurbished\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlinePath": "'offline.html'"
+}
