@@ -5,6 +5,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -16,11 +17,26 @@ public class StandardLayout extends VerticalLayout {
   public StandardLayout(String title) {
     setJustifyContentMode(JustifyContentMode.CENTER);
     setAlignItems(Alignment.CENTER);
+    setPadding(false);
 
-    HorizontalLayout navBar = createNavbar();
+    HorizontalLayout navBar = createNavbar(title);
     Footer footer = createFooter();
 
     add(navBar, content, footer);
+  }
+
+  private HorizontalLayout createNavbar(String title) {
+    HorizontalLayout navBar = new HorizontalLayout();
+    navBar.setMinWidth(100, Unit.PERCENTAGE);
+
+    if (!(this instanceof HomeView)) {
+      Button homeButton = new Button("Home", VaadinIcon.HOME.create());
+      navBar.add(homeButton);
+    }
+
+    H1 titleLabel = new H1(title);
+    navBar.add(titleLabel);
+    return navBar;
   }
 
   private Footer createFooter() {
@@ -29,17 +45,6 @@ public class StandardLayout extends VerticalLayout {
     footer.setText("Copyright 2022 KTM Sportmotorcycle GmbH, all rights reserved");
     footer.setMinWidth(100, Unit.PERCENTAGE);
     return footer;
-  }
-
-  private HorizontalLayout createNavbar() {
-    HorizontalLayout navBar = new HorizontalLayout();
-    if (!(this instanceof HomeView)) {
-      Button homeButton = new Button("Home", VaadinIcon.HOME.create());
-      navBar.add(homeButton);
-    }
-
-    navBar.setMinWidth(100, Unit.PERCENTAGE);
-    return navBar;
   }
 
   protected void setContent(Component component) {
