@@ -1,6 +1,6 @@
-#KTM_Refurbishment (Atos X-Life-Challenge 2022)
+# KTM_Refurbishment (Atos X-Life-Challenge 2022)
 
-##Aufgaben Stellung:
+## Aufgaben Stellung:
 
   Mithilfe von IOT-Devices sollen Daten erhoben werden, die zur Analyse und Bewertung von KTM-Komponenten 
   dienen, um eine Empfehlung abgeben zu können ob und wie diese Komponenten weiterverwendet oder verwertet 
@@ -11,7 +11,7 @@
   -Wiederverwendbarkeit von Komponenten
   -KTM-Bikes länger im Betrieb zu halten
 
-##Ziele:
+## Ziele:
 
   Eine Website die es ermöglicht Daten über seine eigenen Bikes zu erhalten, sowie deren Komponenten.
   Diese Komponenten werden mit einem Sterne-System bewertet, das sich aus dem Nutzungsverhalten der Person ableiten lässt
