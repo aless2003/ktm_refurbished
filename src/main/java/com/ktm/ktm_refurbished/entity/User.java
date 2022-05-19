@@ -2,6 +2,7 @@ package com.ktm.ktm_refurbished.entity;
 
 import com.google.common.hash.Hashing;
 import java.nio.charset.StandardCharsets;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
