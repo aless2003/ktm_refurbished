@@ -47,10 +47,11 @@ public class StandardLayout extends VerticalLayout {
     if (!(this instanceof SignUpView)) {
       Button logout = new Button("Logout", VaadinIcon.SIGN_OUT.create());
       logout.setId("logout");
-      logout.addClickListener(e -> {
-        securityService.logout();
-        UI.getCurrent().navigate(HomeView.class);
-      });
+      logout.addClickListener(
+          e -> {
+            securityService.logout();
+            UI.getCurrent().navigate(HomeView.class);
+          });
       navBar.add(logout);
     }
 
