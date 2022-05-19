@@ -28,11 +28,7 @@ public class SecurityConfig extends VaadinWebSecurityConfigurerAdapter {
 
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
-    log.info("Initializing password encoder");
-
-    var encoder = new BCryptPasswordEncoder();
-    log.info("password" + encoder.encode("test"));
-    return encoder;
+    return new BCryptPasswordEncoder();
   }
 
   @Override
@@ -43,8 +39,8 @@ public class SecurityConfig extends VaadinWebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+    http.authorizeRequests().requestMatchers(request -> request.getServletPath().equals("/signup")).permitAll();
     super.configure(http);
-
     setLoginView(http, LoginView.class);
   }
 
