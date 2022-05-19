@@ -1,0 +1,21 @@
+.title {
+  margin: 0;
+}
+
+#template {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#content {
+  min-width: 85%;
+  min-height: 90%;
+}
+
+#template {
+  min-height: 100vh;
+}
+
+html, body {
+  min-height: 100%;
+}
