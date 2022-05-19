@@ -2,10 +2,12 @@ package com.ktm.ktm_refurbished.web.views;
 
 import com.ktm.ktm_refurbished.db.UserRepository;
 import com.ktm.ktm_refurbished.entity.User;
+import com.ktm.ktm_refurbished.security.SecurityService;
 import com.ktm.ktm_refurbished.web.layouts.StandardLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
@@ -24,12 +26,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @PermitAll
 @AnonymousAllowed
 @Route()
+@CssImport("./css/sec.css")
 public class SignUpView extends StandardLayout {
 
   private final PasswordField passwordField;
 
-  public SignUpView(UserRepository repo, BCryptPasswordEncoder encoder) {
-    super("Sign-Up");
+  public SignUpView(UserRepository repo, BCryptPasswordEncoder encoder, SecurityService securityService) {
+    super("Sign-Up", securityService);
 
     H3 title = new H3("Signup form");
 
