@@ -31,7 +31,8 @@ public class SignUpView extends StandardLayout {
 
   private final PasswordField passwordField;
 
-  public SignUpView(UserRepository repo, BCryptPasswordEncoder encoder, SecurityService securityService) {
+  public SignUpView(
+      UserRepository repo, BCryptPasswordEncoder encoder, SecurityService securityService) {
     super("Sign-Up", securityService);
 
     H3 title = new H3("Signup form");
