@@ -1,7 +1,10 @@
 package com.ktm.ktm_refurbished.web.layouts;
 
+import com.ktm.ktm_refurbished.security.SecurityService;
 import com.ktm.ktm_refurbished.web.views.HomeView;
+import com.ktm.ktm_refurbished.web.views.SignUpView;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -15,8 +18,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class StandardLayout extends VerticalLayout {
 
   private final VerticalLayout content = new VerticalLayout();
+  private SecurityService securityService;
 
-  public StandardLayout(String title) {
+  public StandardLayout(String title, SecurityService securityService) {
+    this.securityService = securityService;
     setAlignItems(Alignment.CENTER);
     setPadding(false);
     setId("template");
@@ -36,13 +41,18 @@ public class StandardLayout extends VerticalLayout {
     H1 titleLabel = new H1(title);
     titleLabel.setClassName("title");
     navBar.add(titleLabel);
-
-    if (!(this instanceof HomeView)) {
-      Button homeButton = new Button("Home", VaadinIcon.HOME.create());
-      navBar.add(homeButton);
-    }
-
+    navBar.setId("navbar");
     navBar.setJustifyContentMode(JustifyContentMode.BETWEEN);
+
+    if (!(this instanceof SignUpView)) {
+      Button logout = new Button("Logout", VaadinIcon.SIGN_OUT.create());
+      logout.setId("logout");
+      logout.addClickListener(e -> {
+        securityService.logout();
+        UI.getCurrent().navigate(HomeView.class);
+      });
+      navBar.add(logout);
+    }
 
     return navBar;
   }
