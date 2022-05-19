@@ -73,6 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Client-side JS
         "/VAADIN/**",
 
+        //Client side Bootstraping
+        "/frontend/*",
+
         // the standard favicon URI
         "/favicon.ico",
 

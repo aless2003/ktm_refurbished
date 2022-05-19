@@ -3,8 +3,10 @@ package com.ktm.ktm_refurbished.entity;
 import com.google.common.hash.Hashing;
 import java.nio.charset.StandardCharsets;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document(collection = "users")
 public class User {
   private String username;
   private String passwordHash;
