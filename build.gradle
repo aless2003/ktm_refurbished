@@ -28,6 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.vaadin:vaadin-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.mongodb:mongo-java-driver:3.12.11'
     implementation("com.google.guava:guava:31.1-jre")
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

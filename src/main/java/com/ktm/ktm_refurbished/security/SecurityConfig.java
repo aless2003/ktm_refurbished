@@ -1,19 +1,45 @@
 package com.ktm.ktm_refurbished.security;
 
+import com.ktm.ktm_refurbished.db.UserRepository;
 import com.ktm.ktm_refurbished.web.views.LoginView;
 import com.vaadin.flow.spring.security.VaadinWebSecurityConfigurerAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends VaadinWebSecurityConfigurerAdapter {
+
+  private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+  private final MongoUserService userService;
+
+  public SecurityConfig(MongoUserService userService) {
+    this.userService = userService;
+  }
+
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    log.info("Initializing password encoder");
+
+    var encoder = new BCryptPasswordEncoder();
+    log.info("password" + encoder.encode("test"));
+    return encoder;
+  }
+
+  @Override
+  protected void configure(@Autowired AuthenticationManagerBuilder auth) throws Exception {
+    super.configure(auth);
+    auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+  }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -31,19 +57,5 @@ public class SecurityConfig extends VaadinWebSecurityConfigurerAdapter {
         .antMatchers("/images/**")
         .antMatchers("/css/**");
     super.configure(web);
-  }
-
-  /**
-   * Demo UserDetailService, which only provides two hardcoded
-   * in-memory users and their roles.
-   * NOTE: This should not be used in real-world applications.
-   */
-  @Bean
-  @Override
-  public UserDetailsService userDetailsService() {
-    return new InMemoryUserDetailsManager(User.withUsername("user")
-        .password("{noop}userpass")
-        .roles("USER")
-        .build());
   }
 }
