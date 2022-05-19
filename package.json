@@ -129,7 +129,7 @@
       "workbox-core": "6.5.0",
       "workbox-precaching": "6.5.0"
     },
-    "hash": "6804f0b9ac709aa33f8dd15c2554f750e4605098d0f8d45c11fd50a92b159d3f"
+    "hash": "a3e3cdddd3cc93962cf1e4812cc9b14cd349b5c89a6299f101c124575554c346"
   },
   "dependencies": {
     "@polymer/iron-icon": "3.0.1",
@@ -374,6 +374,7 @@
     "@vaadin/common-frontend": "$@vaadin/common-frontend",
     "construct-style-sheets-polyfill": "$construct-style-sheets-polyfill",
     "lit": "$lit",
-    "date-fns": "$date-fns"
+    "date-fns": "$date-fns",
+    "mongodb": "$mongodb"
   }
 }

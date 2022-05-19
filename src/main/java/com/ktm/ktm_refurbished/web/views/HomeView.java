@@ -1,5 +1,7 @@
 package com.ktm.ktm_refurbished.web.views;
 
+import com.ktm.ktm_refurbished.objects.Motorcycle;
+import com.ktm.ktm_refurbished.services.MotorcycleService;
 import com.ktm.ktm_refurbished.web.layouts.StandardLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.router.Route;
@@ -9,15 +11,10 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias("/")
 public class HomeView extends StandardLayout {
 
-  public HomeView() {
+  public HomeView(MotorcycleService service) {
     super("Home");
-    Grid<Person> grid = new Grid<>(Person.class, false);
-    grid.addColumn(Person::getFirstName).setHeader("First name");
-    grid.addColumn(Person::getLastName).setHeader("Last name");
-    grid.addColumn(Person::getEmail).setHeader("Email");
-    grid.addColumn(Person::getProfession).setHeader("Profession");
-
-    List<Person> people = DataService.getPeople();
-    grid.setItems(people);
+    Grid<Motorcycle> grid = new Grid<>(Motorcycle.class);
+    grid.setItems(service.findAll());
+    add(grid);
   }
 }
