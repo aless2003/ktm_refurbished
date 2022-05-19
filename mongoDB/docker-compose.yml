@@ -2,11 +2,11 @@ version: '3'
 services:
   my-mongoDB:
     image: mongo:latest
-    container_name: mongo
-    environment:
-      - MONGO_INITDB_ROOT_admin
-      - MONGO_INITDB_ROOT_readytorace
+    container_name: mongodb
+   # environment:
+     # - MONGO_INITDB_ROOT_admin
+     # - MONGO_INITDB_ROOT_readytorace
     volumes:
-      - ".mongo:/data/db"
+      - ".bikes:/data/db"
     ports:
       - '27017'
