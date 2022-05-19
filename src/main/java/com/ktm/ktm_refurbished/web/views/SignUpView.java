@@ -23,7 +23,6 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import javax.annotation.security.PermitAll;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @PermitAll
 @AnonymousAllowed
 @Route()
@@ -48,11 +47,11 @@ public class SignUpView extends StandardLayout {
     Button submitButton = new Button("Sign-UP");
     submitButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-    //Build Layout
-    FormLayout formLayout = new FormLayout(title, userName, passwordField, emailField,
-        errorMessage, submitButton);
+    // Build Layout
+    FormLayout formLayout =
+        new FormLayout(title, userName, passwordField, emailField, errorMessage, submitButton);
 
-    //Responsive
+    // Responsive
     formLayout.setResponsiveSteps(
         new FormLayout.ResponsiveStep("0", 1, FormLayout.ResponsiveStep.LabelsPosition.TOP),
         new FormLayout.ResponsiveStep("490px", 2, FormLayout.ResponsiveStep.LabelsPosition.TOP));
@@ -68,51 +67,53 @@ public class SignUpView extends StandardLayout {
     // Add the form to page
     add(formLayout);
 
-    submitButton.addClickListener(event -> {
+    submitButton.addClickListener(
+        event -> {
+          User user = new User();
+          Binder<User> binder = new Binder<>(User.class);
+          binder.setStatusLabel(errorMessage);
+          binder.bind(userName, User::getUsername, User::setUsername);
+          binder.bind(emailField, User::getEmail, User::setEmail);
+          binder.bind(
+              passwordField,
+              User::getPasswordHash,
+              (user1, password) -> user1.setPasswordHash(password, encoder));
+          try {
+            binder.writeBean(user);
+          } catch (ValidationException e) {
+            Notification notification = new Notification("Validation error", 3000);
+            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            notification.open();
+            return;
+          }
 
-      User user = new User();
-      Binder<User> binder = new Binder<>(User.class);
-      binder.setStatusLabel(errorMessage);
-      binder.bind(userName, User::getUsername, User::setUsername);
-      binder.bind(emailField, User::getEmail, User::setEmail);
-      binder.bind(passwordField, User::getPasswordHash, (user1, password) -> user1.setPasswordHash(password, encoder));
-      try {
-        binder.writeBean(user);
-      } catch (ValidationException e) {
-        Notification notification = new Notification("Validation error", 3000);
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        notification.open();
-        return;
-      }
+          var repoUser = repo.findByUsername(user.getUsername());
+          if (repoUser.isPresent()) {
+            Notification notification = new Notification("Username already exists", 3000);
+            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            notification.open();
+            return;
+          }
 
-      var repoUser = repo.findByUsername(user.getUsername());
-      if (repoUser.isPresent()) {
-        Notification notification = new Notification("Username already exists", 3000);
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        notification.open();
-        return;
-      }
+          repoUser = repo.findByEmail(user.getEmail());
+          if (repoUser.isPresent()) {
+            Notification notification = new Notification("Email already exists", 3000);
+            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            notification.open();
+            return;
+          }
 
-      repoUser = repo.findByEmail(user.getEmail());
-      if (repoUser.isPresent()) {
-        Notification notification = new Notification("Email already exists", 3000);
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        notification.open();
-        return;
-      }
+          if (user.getUsername() == null
+              || user.getPasswordHash() == null
+              || user.getEmail() == null) {
+            Notification notification = new Notification("Please fill out all the fields", 3000);
+            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            notification.open();
+            return;
+          }
 
-      if (user.getUsername() == null || user.getPasswordHash() == null || user.getEmail() == null) {
-        Notification notification = new Notification("Please fill out all the fields", 3000);
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-        notification.open();
-        return;
-      }
-
-      repo.save(user);
-      UI.getCurrent().navigate(LoginView.class);
-
-    });
-
-
+          repo.save(user);
+          UI.getCurrent().navigate(LoginView.class);
+        });
   }
 }

@@ -2,10 +2,8 @@ package com.ktm.ktm_refurbished.security;
 
 import com.ktm.ktm_refurbished.db.UserRepository;
 import com.ktm.ktm_refurbished.entity.User;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,9 +28,7 @@ public class MongoUserService implements UserDetailsService {
     authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
     if (user.isPresent()) {
       return new org.springframework.security.core.userdetails.User(
-          user.get().getUsername(),
-          user.get().getPasswordHash(),
-          authorities);
+          user.get().getUsername(), user.get().getPasswordHash(), authorities);
     }
 
     throw new UsernameNotFoundException("User not found");
