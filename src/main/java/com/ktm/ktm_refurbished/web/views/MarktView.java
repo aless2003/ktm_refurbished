@@ -2,7 +2,6 @@ package com.ktm.ktm_refurbished.web.views;
 
 import com.ktm.ktm_refurbished.entity.User;
 import com.ktm.ktm_refurbished.web.layouts.StandardLayout;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -15,12 +14,12 @@ import javax.annotation.security.PermitAll;
 @PermitAll
 @Route()
 @RouteAlias("/market")
-//@CssImport("./css/sec.css")
+// @CssImport("./css/sec.css")
 public class MarktView extends StandardLayout {
   Grid<User> grid = new Grid<>(User.class);
   TextField filterText = new TextField();
 
-  public MarktView(){
+  public MarktView() {
     super("Market");
     setSizeFull();
     configureGrid();
@@ -34,16 +33,14 @@ public class MarktView extends StandardLayout {
     updateList();
   }
 
-
-
   private void configureGrid() {
     grid.addClassNames("Market");
     grid.setSizeFull();
-    //grid.setColumns("firstName", "lastName", "email");
-    //grid.addColumn(contact -> contact.getStatus().getName()).setHeader("Status");
-    //grid.addColumn(contact -> contact.getCompany().getName()).setHeader("Company");
-    //grid.addColumn(contact -> contact.getPay().getPay()).setHeader("Payment");
-    //grid.getColumns().forEach(col -> col.setAutoWidth(true));
+    // grid.setColumns("firstName", "lastName", "email");
+    // grid.addColumn(contact -> contact.getStatus().getName()).setHeader("Status");
+    // grid.addColumn(contact -> contact.getCompany().getName()).setHeader("Company");
+    // grid.addColumn(contact -> contact.getPay().getPay()).setHeader("Payment");
+    // grid.getColumns().forEach(col -> col.setAutoWidth(true));
   }
 
   private HorizontalLayout getToolbar() {
@@ -56,10 +53,8 @@ public class MarktView extends StandardLayout {
     toolbar.addClassName("toolbar");
     return toolbar;
   }
+
   private void updateList() {
-    //grid.setItems(service.findAllContacts(filterText.getValue()));
+    // grid.setItems(service.findAllContacts(filterText.getValue()));
   }
-
-
 }
-
