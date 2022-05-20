@@ -1,5 +1,7 @@
 package com.ktm.ktm_refurbished.web.views;
 
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,6 +20,10 @@ public class LoginView extends VerticalLayout {
 
     loginForm.setAction("login");
 
+    Button button = new Button("Sign-Up");
+    button.addClickListener( e -> UI.getCurrent().navigate(SignUpView.class));
+
     add(loginForm);
+    add(button);
   }
 }

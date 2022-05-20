@@ -1,6 +1,7 @@
 package com.ktm.ktm_refurbished.web.views;
 
 import com.ktm.ktm_refurbished.entity.User;
+import com.ktm.ktm_refurbished.security.SecurityService;
 import com.ktm.ktm_refurbished.web.layouts.StandardLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
@@ -19,8 +20,8 @@ public class MarktView extends StandardLayout {
   Grid<User> grid = new Grid<>(User.class);
   TextField filterText = new TextField();
 
-  public MarktView() {
-    super("Market");
+  public MarktView(SecurityService securityService) {
+    super("Market", securityService);
     setSizeFull();
     configureGrid();
 

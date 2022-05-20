@@ -48,9 +48,11 @@ public class SignUpView extends StandardLayout {
     Button submitButton = new Button("Sign-UP");
     submitButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
+    Button loginbutton = new Button("login");
+    loginbutton.addClickListener( e -> UI.getCurrent().navigate(LoginView.class));
+
     // Build Layout
-    FormLayout formLayout =
-        new FormLayout(title, userName, passwordField, emailField, errorMessage, submitButton);
+    FormLayout formLayout = new FormLayout(title, userName, passwordField, emailField, errorMessage, submitButton, loginbutton);
 
     // Responsive
     formLayout.setResponsiveSteps(
@@ -60,6 +62,7 @@ public class SignUpView extends StandardLayout {
     formLayout.setColspan(title, 2);
     formLayout.setColspan(errorMessage, 2);
     formLayout.setColspan(submitButton, 2);
+    formLayout.setColspan(loginbutton, 2);
 
     // ErrorMessage styling
     errorMessage.getStyle().set("color", "var(--lumo-error-text-color)");
