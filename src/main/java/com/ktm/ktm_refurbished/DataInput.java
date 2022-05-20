@@ -4,12 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 
 public class DataInput implements CommandLineRunner {
 
-  public DataInput() {
-
-  }
+  public DataInput() {}
 
   @Override
-  public void run(String... args) throws Exception {
-
-  }
+  public void run(String... args) throws Exception {}
 }

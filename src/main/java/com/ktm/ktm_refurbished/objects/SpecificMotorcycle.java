@@ -12,9 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "motorcycleSpecificData")
 public class SpecificMotorcycle {
 
-  @Id
-  private String vin;
+  @Id private String vin;
   private Motorcycle motorcycle;
   private MotorcycleSpecificData motorcycleSpecificData;
-
 }

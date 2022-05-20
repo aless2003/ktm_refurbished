@@ -12,8 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "motorcyclePart")
 public class MotorcyclePart {
 
-  @Id
-  String name;
+  @Id String name;
   MotorcyclePartStandardData[] motorcyclePartStandardData;
-
 }

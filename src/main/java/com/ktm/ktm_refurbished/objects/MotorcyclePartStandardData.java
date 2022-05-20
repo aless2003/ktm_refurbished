@@ -18,12 +18,10 @@ public class MotorcyclePartStandardData {
     LOWER
   }
 
-  @Id
-  String name;
+  @Id String name;
   OptimalState optimalState;
   float normalUserValue;
   float weighting;
   float kilometerImpact;
   float kilometerAverage;
-
 }

@@ -5,6 +5,4 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MotorcycleRepository extends MongoRepository<Motorcycle, String> {
-
-}
+public interface MotorcycleRepository extends MongoRepository<Motorcycle, String> {}

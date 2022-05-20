@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "motorcycleSpecificData")
 public class MotorcycleSpecificData {
 
-  @Id
-  private String name;
+  @Id private String name;
   private Float[] values;
 }
