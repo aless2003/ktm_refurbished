@@ -1,0 +1,21 @@
+{
+  "name": "MotorcyclePart1",
+  "motorcyclePartStandardData": [
+    {
+      "name": "PartNameData1",
+      "optimalState": "HIGH",
+      "normalUserValue": 390,
+      "weighting": 400,
+      "kilometerImpact": 400,
+      "kilometerAverage": 300
+    },
+    {
+      "name": "PartNameData1",
+      "optimalState": "HIGH",
+      "normalUserValue": 390,
+      "weighting": 400,
+      "kilometerImpact": 400,
+      "kilometerAverage": 300
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "MODEL234",
+  "name": "Name",
+  "kilometers": 1000,
+  "horsePower": 500,
+  "displacement": 800,
+  "parts": [
+    { "name": "PartName1" },
+    { "name": "PartName2" }
+  ]
+}
