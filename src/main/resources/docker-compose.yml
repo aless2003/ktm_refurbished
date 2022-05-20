@@ -1,0 +1,7 @@
+version: '3'
+services:
+  ktm_mongo:
+    image: mongo:latest
+    container_name: ktm_mongo
+    ports:
+      - 27017:27017
