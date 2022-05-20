@@ -9,4 +9,5 @@ public class KtmRefurbishedApplication {
   public static void main(String[] args) {
     SpringApplication.run(KtmRefurbishedApplication.class, args);
   }
+
 }

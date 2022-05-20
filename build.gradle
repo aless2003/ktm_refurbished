@@ -25,6 +25,7 @@ ext {
 }
 
 dependencies {
+    fileTree(dir: 'libs', include: '*.jar')
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.vaadin:vaadin-spring-boot-starter'
