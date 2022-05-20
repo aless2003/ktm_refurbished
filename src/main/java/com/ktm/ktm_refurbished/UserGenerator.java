@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserGenerator implements CommandLineRunner {
 
-    private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+  private final UserRepository userRepository;
+  private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
   public UserGenerator(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
     this.userRepository = userRepository;
