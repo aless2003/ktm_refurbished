@@ -21,7 +21,7 @@ public class LoginView extends VerticalLayout {
     loginForm.setAction("login");
 
     Button button = new Button("Sign-Up");
-    button.addClickListener( e -> UI.getCurrent().navigate(SignUpView.class));
+    button.addClickListener(e -> UI.getCurrent().navigate(SignUpView.class));
 
     add(loginForm);
     add(button);

@@ -49,10 +49,12 @@ public class SignUpView extends StandardLayout {
     submitButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
     Button loginbutton = new Button("login");
-    loginbutton.addClickListener( e -> UI.getCurrent().navigate(LoginView.class));
+    loginbutton.addClickListener(e -> UI.getCurrent().navigate(LoginView.class));
 
     // Build Layout
-    FormLayout formLayout = new FormLayout(title, userName, passwordField, emailField, errorMessage, submitButton, loginbutton);
+    FormLayout formLayout =
+        new FormLayout(
+            title, userName, passwordField, emailField, errorMessage, submitButton, loginbutton);
 
     // Responsive
     formLayout.setResponsiveSteps(
